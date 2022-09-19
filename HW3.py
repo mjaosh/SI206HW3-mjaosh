@@ -1,10 +1,34 @@
-﻿# Your name:
-# Your student id:
-# Your email:
+﻿# Your name: Mari Jaoshvili
+# Your student id: 4489 8189
+# Your email: majosh
 # List who you have worked with on this homework:
 
 
 # import the random module for use in this program
+
+import random
+
+
+class Fortune_Teller: 
+    def __init__(self, init_list): 
+        self.fortunes_list = init_list 
+        self.questions_list = []
+        self.fortunes_history_list = []
+
+
+    def __str__(self):
+        sentence = ""
+        for fortune in self.fortunes_list:
+            sentence = sentence + fortune + ", "
+        
+        return sentence 
+
+    def get_fortune_method(self):
+        num_items = len(self.fortunes_list) - 1
+        x = random.randit(0, num_items)
+        self.fortunes_history_list.append(x)
+        return self.fortunes_list[x]
+
 
 # Create the class Fortune_Teller
     # create the constructor (__init__) method
