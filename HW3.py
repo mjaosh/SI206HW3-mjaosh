@@ -17,12 +17,13 @@ class Fortune_Teller:
 
 
     def __str__(self):
-        sentence = ""
+        sentence = "["
         for i in range(len(self.fortunes_list) - 1):
-            sentence = sentence + self.fortunes_list[i] + ", "
+            sentence = sentence + "'" + self.fortunes_list[i] + "'" + ", "
         
-        sentence = sentence + self.fortunes_list[len(self.fortunes_list) - 1]
+        sentence = sentence + "'" + self.fortunes_list[len(self.fortunes_list) - 1] + "'" + "]"
         return sentence 
+        
 
     def get_fortune(self):
         num_items = len(self.fortunes_list) - 1
@@ -46,7 +47,7 @@ class Fortune_Teller:
             print("None yet")
 
         for i in range(len(self.fortunes_history_list)):
-            print(str(i) + " " + self.questions_list[i] + " - " + self.fortunes_list[self.fortunes_history_list[i]])
+            print("[" + str(self.fortunes_history_list[i]) + "]" + " " + self.questions_list[i] + " - " + self.fortunes_list[self.fortunes_history_list[i]])
 
 
 
@@ -138,6 +139,16 @@ def main():
     bot = Fortune_Teller(fortunes_list)
 
     # get the first question or quit
+    print("Ask a question or type quit: ")
+    inp = input()
+    
+    while inp != "quit":
+        answer = bot.question_check(inp)
+        print(inp + " - " + answer)
+        print("Ask a question or type quit: ")
+        inp = input()
+
+
 
     # loop while question is not "quit"
 
