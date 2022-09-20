@@ -18,14 +18,15 @@ class Fortune_Teller:
 
     def __str__(self):
         sentence = ""
-        for fortune in self.fortunes_list:
-            sentence = sentence + fortune + ", "
+        for i in range(len(self.fortunes_list) - 1):
+            sentence = sentence + self.fortunes_list[i] + ", "
         
+        sentence = sentence + self.fortunes_list[len(self.fortunes_list) - 1]
         return sentence 
 
     def get_fortune_method(self):
         num_items = len(self.fortunes_list) - 1
-        x = random.randit(0, num_items)
+        x = random.randint(0, num_items)
         self.fortunes_history_list.append(x)
         return self.fortunes_list[x]
 
@@ -36,6 +37,7 @@ class Fortune_Teller:
                 return sentence
 
         self.questions_list.append(question)
+        return self.get_fortune_method()
 
 
     
@@ -43,8 +45,8 @@ class Fortune_Teller:
         if len(self.fortunes_history_list) == 0:
             print("None yet")
 
-        for i in len(self.fortunes_history_list):
-            print(i + " " + self.questions_list[i] + " - " + self.fortunes_list[i])
+        for i in range(len(self.fortunes_history_list)):
+            print(str(i) + " " + self.questions_list[i] + " - " + self.fortunes_list[self.fortunes_history_list[i]])
 
 
 
@@ -153,4 +155,4 @@ def test():
 # only run the main function if this file is being run (not imported)
 if __name__ == "__main__":
     main()
-    #test() TODO: Uncomment when you are ready to test your Fortune_Teller class
+    test()
