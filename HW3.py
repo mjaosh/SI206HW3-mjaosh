@@ -24,7 +24,7 @@ class Fortune_Teller:
         sentence = sentence + self.fortunes_list[len(self.fortunes_list) - 1]
         return sentence 
 
-    def get_fortune_method(self):
+    def get_fortune(self):
         num_items = len(self.fortunes_list) - 1
         x = random.randint(0, num_items)
         self.fortunes_history_list.append(x)
@@ -37,7 +37,7 @@ class Fortune_Teller:
                 return sentence
 
         self.questions_list.append(question)
-        return self.get_fortune_method()
+        return self.get_fortune()
 
 
     
@@ -47,6 +47,43 @@ class Fortune_Teller:
 
         for i in range(len(self.fortunes_history_list)):
             print(str(i) + " " + self.questions_list[i] + " - " + self.fortunes_list[self.fortunes_history_list[i]])
+
+
+
+    def most_common(self, n):
+        pair_list = []
+        for x in range(len(self.fortunes_list)):
+            pair_list.append([0,self.fortunes_list[x]])
+
+
+        for x in range(n):
+            fortune = self.get_fortune()
+            for i in range(len(self.fortunes_list)):
+                if fortune == self.fortunes_list[i]:
+                    pair_list[i][0] = pair_list[i][0] + 1
+
+        for x in range(len(pair_list)):
+            print(pair_list[x][1] + ": " + str(pair_list[x][0]))
+
+
+        x = max(pair_list)
+        print("The most frequent answer after 200 was " + x[1])
+
+
+
+    # EXTRA POINTS
+    # create the most_frequent method
+    # it takes as input:
+    #   a number, n. Ex: 200
+    # it generates a random response n times by calling get_fortune
+    # It prints the counts for each answer and
+    # prints the most frequently occurring answer (Do not use a dictionary in this solution):
+    #   Yes: 36
+    #   No: 36
+    #   Ask again: 48
+    #   Maybe: 38
+    #   Not clear: 47
+    #   The most frequent answer after 200 was Not clear
 
 
 
@@ -148,8 +185,8 @@ def test():
 
     #EXTRA POINTS
     #Uncomment the lines below if you attempt the extra credit!
-    # print("Testing most_common method with 200 responses")
-    # bot2.most_common(200)
+    print("Testing most_common method with 200 responses")
+    bot2.most_common(200)
 
 
 # only run the main function if this file is being run (not imported)
