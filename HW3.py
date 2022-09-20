@@ -29,6 +29,24 @@ class Fortune_Teller:
         self.fortunes_history_list.append(x)
         return self.fortunes_list[x]
 
+    def question_check(self, question):
+        for q in self.questions_list:
+            if q == question:
+                sentence = "I've already answered that question"
+                return sentence
+
+        self.questions_list.append(question)
+
+
+    
+    def print_questions_history(self):
+        if len(self.fortunes_history_list) == 0:
+            print("None yet")
+
+        for i in len(self.fortunes_history_list):
+            print(i + " " + self.questions_list[i] + " - " + self.fortunes_list[i])
+
+
 
 # Create the class Fortune_Teller
     # create the constructor (__init__) method
