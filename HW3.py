@@ -68,7 +68,7 @@ class Fortune_Teller:
 
 
         x = max(pair_list)
-        print("The most frequent answer after 200 was " + x[1])
+        print("The most frequent answer after " + str(n) + " was " + x[1])
 
 
 
